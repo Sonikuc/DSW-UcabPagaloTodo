@@ -1,0 +1,22 @@
+﻿
+@model UCABPagaloTodoWeb.Models.InsertVerificationCodeModel
+@{
+    ViewData["Title"] = "Insertar Código de Verificación ";
+}
+<h2>Insertar Código de Verificación</h2>
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="InsertCode"  method="post">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="VerificationCode"></label>
+                <input asp-for="VerificationCode" class="form-control" />
+                <span asp-validation-for="VerificationCode" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-primary">Verificar</button>
+            <a class="btn btn-secondary" href="@Url.Action("LoginView", "Login")">Regresar</a>
+
+        </form>
+    </div>
+</div>

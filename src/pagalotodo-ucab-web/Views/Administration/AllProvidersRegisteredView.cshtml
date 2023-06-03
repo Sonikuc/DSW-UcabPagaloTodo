@@ -1,0 +1,46 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@{
+    ViewData["Tittle"] = "AdminUser Page";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@model IEnumerable<AllUsersViewModel>
+
+<h1>Listado de usuarios</h1>
+
+<style>
+    .user-table {
+        border-collapse: collapse;
+    }
+
+        .user-table th, .user-table td {
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+</style>
+
+<table class="user-table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Username</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>@user.Dni</td>
+                <td>@user.Name</td>
+                <td>@user.Username</td>
+            </tr>
+        }
+    </tbody>
+</table>

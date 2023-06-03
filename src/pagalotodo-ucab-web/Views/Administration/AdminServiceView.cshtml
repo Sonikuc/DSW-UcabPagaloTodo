@@ -1,0 +1,18 @@
+﻿@{
+    ViewData["Tittle"] = "AdminService Page";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Administracion de servicios</h1>
+
+    <form asp-controller="Service" asp-action="AddServiceView" >
+        <button type="submit" class="btn btn-primary">Agregar Servicio</button>
+    </form>
+
+    <form asp-controller="AllServices" asp-action="AllServicesView" method="get">
+        <button type="submit" class="btn btn-secondary">Actualizar o Eliminar Servicios</button>
+    </form>
+
+
+</div>

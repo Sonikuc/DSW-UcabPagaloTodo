@@ -1,0 +1,21 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model UCABPagaloTodoWeb.Models.ChangeUserStatusViewModel
+@{
+    ViewData["Title"] = "Cambiar Estado de Usuario";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<form method="post" action="/ChangeUserStatus/ChangeUserStatusViewAction">
+    <input type="hidden" name="_username" value="@Model.Username" />
+    <label for="estado">Estado:</label>
+    <select name="estado" id="estado">
+        <option value="true" selected="@((Model.Status.HasValue && Model.Status.Value) ? "true" : null)">Activo</option>
+        <option value="false" selected="@((Model.Status.HasValue && !Model.Status.Value) ? "true" : null)">Inactivo</option>
+    </select>
+    <div>
+        Nombre de usuario: @Model.Username
+    </div>
+    <button type="submit">Guardar</button>
+</form>

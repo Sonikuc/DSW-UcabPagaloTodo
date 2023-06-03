@@ -1,0 +1,72 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model UCABPagaloTodoWeb.Models.SignUpViewModel
+@{
+   
+}
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
+    }
+    }
+
+<div class="col-md-12 col-sm-12">
+    <div class="contenedorlogin">
+        <form asp-action="SignUp" method="post">
+            <div class="form-group">
+                <label>DNI</label>
+                <input type="text" name="DNI" class="form-control" placeholder="DNI" data-val="true" data-val-required="El campo DNI es requerido"
+                       data-val-regex-pattern="^[0-9]*$" data-val-regex="El DNI debe ser un valor numérico." data-val-length-min="7" data-val-length-max="8"
+                       data-val-length="La longitud del DNI debe estar entre 7 y 8 caracteres.">
+                @Html.ValidationMessageFor(m => m.DNI ,null, new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                <label>Nombre</label>
+                <input type="text" name="Name" class="form-control" placeholder="Nombre" data-val="true" data-val-required="El campo Nombre es requerido">
+                @Html.ValidationMessageFor(m => m.Name ,null, new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                <label>Apellido</label>
+                <input type="text" name="LastName" class="form-control" placeholder="Apellido" data-val="true" data-val-required="El campo Apellido es requerido">
+                @Html.ValidationMessageFor(m => m.LastName ,null, new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                <label>Usuario</label>
+                <input type="text" name="UserName" class="form-control" placeholder="Usuario" data-val="true" data-val-required="El campo Usuario es requerido">
+                @Html.ValidationMessageFor(m => m.UserName ,null, new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                <label>E-mail</label>
+                <input type="email" name="email" class="form-control" placeholder="Email" data-val="true" data-val-required="El campo Email es requerido">
+                @Html.ValidationMessageFor(m => m.Email ,null, new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                <label>Contraseña</label>
+                <input type="password" name="Password" class="form-control" placeholder="Contraseña" data-val="true" data-val-required="El campo Contraseña es requerido">
+                @Html.ValidationMessageFor(m => m.Password ,null, new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                <label>Confirmar contraseña</label>
+                <input type="password" name="confirmationpassword" class="form-control" placeholder="Contraseña" data-val="true" data-val-required="El campo Contraseña es requerido es requerido">
+                @Html.ValidationMessageFor(m => m.confirmationpassword ,null, new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                <label>Numero de Telefono</label>
+                <input type="text" name="PhoneNumber" class="form-control" placeholder="Numero" data-val="true" data-val-required="El campo Numero es requerido" 
+                data-val-regex-pattern="^[0-9]*$" data-val-regex="El número de teléfono debe ser un valor numérico." data-val-length-min="11" data-val-length-max="15" 
+                data-val-length="La longitud del número de teléfono debe estar entre 11 y 15 caracteres.">
+                @Html.ValidationMessageFor(m => m.PhoneNumber ,null, new { @class = "text-danger" })
+            </div>
+            <div class="botones">
+                <button type="submit" class="btn btn-success">Entrar</button>
+                <a class="btn btn-danger" asp-area="" asp-controller="Login" asp-action="LoginView">Cancelar</a>
+            </div>
+        </form>
+        <p>@ViewBag.Error</p>
+    </div>
+</div>
+

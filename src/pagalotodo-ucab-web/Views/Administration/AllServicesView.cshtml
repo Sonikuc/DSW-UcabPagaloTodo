@@ -1,0 +1,52 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model IEnumerable<AllServicesViewModel>
+@{
+    ViewData["Tittle"] = "AdminServices Page";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Listado de Servicios</h1>
+
+<style>
+    .user-table {
+        border-collapse: collapse;
+    }
+
+        .user-table th, .user-table td {
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+</style>
+
+<table class="user-table">
+    <thead>
+        <tr>
+            <th>Nombre Servicio</th>
+            <th>Tipo</th>
+            <th>Proveedor</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>@user.ServiceName</td>
+                <td>@user.TypeService</td>
+                <td>@user.ProviderUsername</td>
+                <td>
+                    <form action="/UpdateService/UpdateServiceAction" method="post">
+
+                        <input type="hidden" name="id" value="@user.ServiceId" />
+                        <button type="submit" asp-route-id="@user.ServiceId">Editar</button>
+                    </form>
+                    <a href="/Service/DeleteServiceView?ServiceName=@user.ServiceName&provider=@user.ProviderUsername">Eliminar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+

@@ -1,0 +1,45 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model UCABPagaloTodoWeb.Models.AddServiceViewModel
+@{
+}
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    }
+
+<div class="col-md-12 col-sm-12">
+    <div class="contenedorlogin">
+        <form asp-action="AddServiceAction" asp-controller="Service" method="post">
+            <div class="form-group">
+                <label>Nombre del servicio</label>
+                <input type="text" name="ServiceName" class="form-control" placeholder="Nombre del servicio" data-val="true" data-val-required="El campo Nombre del servicio es requerido">
+                @Html.ValidationMessageFor(m => m.ServiceName, null, new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                <label>Tipo de servicio</label>
+                <input type="text" name="TypeService" class="form-control" placeholder="Tipo de servicio" data-val="true" data-val-required="El campo Tipo de servicio es requerido">
+                @Html.ValidationMessageFor(m => m.TypeService, null, new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                <label>Número de contacto</label>
+                <input type="text" name="ContactNumber" class="form-control" placeholder="Número de contacto" data-val="true" 
+                    data-val-regex-pattern="^[0-9]*$" data-val-regex="El número de teléfono debe ser un valor numérico." 
+                    data-val-length-min="11" data-val-length-max="15" data-val-length="La longitud del número de teléfono debe estar entre 11 y 15 caracteres.">
+                @Html.ValidationMessageFor(m => m.ContactNumber, null, new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                <label>Nombre de usuario del Proveedor</label>
+                <input type="text" name="UserName" class="form-control" placeholder="Nombre de usuario" data-val="true" data-val-required="El campo Nombre de usuario es requerido">
+                @Html.ValidationMessageFor(m => m.UserName, null, new { @class = "text-danger" })
+            </div>
+            <div class="botones">
+                <button type="submit" class="btn btn-success">Registrar servicio</button>
+                <a class="btn btn-danger" asp-area="" asp-controller="Admin" asp-action="AdminHomeView">Cancelar</a>
+            </div>
+        </form>
+    </div>
+</div>
